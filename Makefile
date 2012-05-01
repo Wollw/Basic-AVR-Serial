@@ -31,7 +31,7 @@ MCU = atmega328p
 
 LFUSE = 0xe2
 HFUSE = 0xd9
-EFUSE = 0x07
+EFUSE = 0x05
 
 # Processor frequency.
 #     This will define a symbol, F_CPU, in all source code files equal to the 
@@ -196,7 +196,7 @@ AVRDUDE_PROGRAMMER = avrisp2
 #AVRDUDE_PROGRAMMER = ponyser
 
 # com1 = serial port. Use lpt1 to connect to parallel port.
-AVRDUDE_PORT = lpt1
+AVRDUDE_PORT = usb
 #AVRDUDE_PORT = COM1
 
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
@@ -218,6 +218,7 @@ AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 #AVRDUDE_VERBOSE = -v -v
 
 AVRDUDE_FLAGS = -p $(MCU) -c $(AVRDUDE_PROGRAMMER)
+AVRDUDE_FLAGS += -P $(AVRDUDE_PORT)
 AVRDUDE_FLAGS += $(AVRDUDE_NO_VERIFY)
 AVRDUDE_FLAGS += $(AVRDUDE_VERBOSE)
 AVRDUDE_FLAGS += $(AVRDUDE_ERASE_COUNTER)
